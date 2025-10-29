@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Statement</title>
+    <style>
+        body { font-family: sans-serif; }
+        h1, h2 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Transaction Statement</h1>
+    <h2>{{ data.start_date.strftime('%d %B %Y') }} to {{ data.end_date.strftime('%d %B %Y') }}</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tx in data.transactions %}
+            <tr>
+                <td>{{ tx.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{{ tx.description }}</td>
+                <td>{{ tx.type }}</td>
+                <td>{{ tx.amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
